@@ -6,11 +6,20 @@
   <title>MKV Download Center</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: #f4f4f4;
       padding: 2em;
       text-align: center;
     }
+
+    .banner img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 16px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+      margin-bottom: 1.5em;
+    }
+
     .container {
       max-width: 600px;
       margin: auto;
@@ -19,9 +28,11 @@
       border-radius: 12px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
+
     h1 {
       margin-bottom: 1.5em;
     }
+
     .download-link {
       display: block;
       background: #0077cc;
@@ -32,22 +43,99 @@
       border-radius: 8px;
       transition: background 0.3s ease;
     }
+
     .download-link:hover {
       background: #005fa3;
     }
+
     .filename {
       font-weight: bold;
       font-size: 1.1em;
     }
+
     .size {
       font-size: 0.9em;
       color: #dfefff;
       display: block;
       margin-top: 0.2em;
     }
+
+    /* Modal styles */
+    #devModal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.4);
+      z-index: 1000;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    #devModalContent {
+      background: #fff;
+      width: 90%;
+      max-width: 300px;
+      margin: 12% auto;
+      padding: 1.5em 1.2em;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+      position: relative;
+      animation: fadeIn 0.35s ease-out;
+      text-align: center;
+    }
+
+    #devModalContent h2 {
+      margin-bottom: 0.5em;
+      color: #333;
+    }
+
+    #devModalContent p {
+      margin: 0.4em 0;
+      font-size: 0.95em;
+      color: #555;
+    }
+
+    #devModalContent a {
+      color: #0077cc;
+      text-decoration: none;
+    }
+
+    #devModalContent a:hover {
+      text-decoration: underline;
+    }
+
+    #closeModal {
+      position: absolute;
+      top: 10px;
+      right: 12px;
+      background: #ff4d4d;
+      border: none;
+      color: white;
+      font-size: 1em;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      cursor: pointer;
+      line-height: 1;
+      font-weight: bold;
+    }
+
+    #closeModal:hover {
+      background: #e60000;
+    }
   </style>
 </head>
 <body>
+
+  <!-- Banner Logo -->
+  <div class="banner">
+    <img src="https://i.postimg.cc/wTySSm4D/hq720.jpg" alt="MKV Download Center Logo" />
+  </div>
+
   <div class="container">
     <h1><small>Bachelor Point Season 05 (2025)</small></h1>
 
@@ -56,41 +144,74 @@
       <span class="size">480p ➤170.09 MB</span>
     </a>
 
-    <a class="download-link" href="videos/movie2.mkv" download>
+    <a class="download-link" href="" download>
       🎬 <span class="filename">Episode 02</span>
       <span class="size">Coming Soon.......</span>
     </a>
 
-    <a class="download-link" href="videos/documentary.mkv" download>
+    <a class="download-link" href="" download>
       🎬 <span class="filename">Episode 03</span>
       <span class="size">Coming Soon.......</span>
     </a>
-    
-    <a class="download-link" href="videos/documentary.mkv" download>
+
+    <a class="download-link" href="" download>
       🎬 <span class="filename">Episode 04</span>
       <span class="size">Coming Soon.......</span>
     </a>
-    
-    <a class="download-link" href="videos/documentary.mkv" download>
+
+    <a class="download-link" href="" download>
       🎬 <span class="filename">Episode 05</span>
       <span class="size">Coming Soon.......</span>
     </a>
-    
-    <a class="download-link" href="videos/documentary.mkv" download>
+
+    <a class="download-link" href="" download>
       🎬 <span class="filename">Episode 06</span>
       <span class="size">Coming Soon.......</span>
     </a>
-    
-    <a class="download-link" href="videos/documentary.mkv" download>
+
+    <a class="download-link" href="" download>
       🎬 <span class="filename">Episode 07</span>
       <span class="size">Coming Soon.......</span>
     </a>
-    
-    <a class="download-link" href="videos/documentary.mkv" download>
+
+    <a class="download-link" href="" download>
       🎬 <span class="filename">Episode 08</span>
       <span class="size">Coming Soon.......</span>
     </a>
-
   </div>
+
+  <!-- Developer Modal -->
+  <div id="devModal">
+    <div id="devModalContent">
+      <button id="closeModal">&times;</button>
+      <h2>👨‍💻 Developer</h2>
+      <p><strong>This Landing Page Is Made By ➤</strong><b>Shihab Rahman</b></p>
+      <p><strong>Telegram:</strong> <a href="https://t.me/ShihabRahman04/" target="_blank">Shihab Rahman</a></p>
+      
+      <p><strong>Website:</strong> <a href="https://shihabrahman1.blogspot.com/" target="_blank">Shihab Rahman</a></p>
+    </div>
+  </div>
+
+  <!-- Script -->
+  <script>
+    const devModal = document.getElementById("devModal");
+    const closeModal = document.getElementById("closeModal");
+
+    window.onload = function () {
+      setTimeout(() => {
+        devModal.style.display = "block";
+      }, 1000);
+    };
+
+    closeModal.onclick = () => {
+      devModal.style.display = "none";
+    };
+
+    window.onclick = function (event) {
+      if (event.target === devModal) {
+        devModal.style.display = "none";
+      }
+    };
+  </script>
 </body>
 </html>
