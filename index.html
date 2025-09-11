@@ -252,7 +252,109 @@
 </head>
 <body>
 
-  <footer>
+  
+
+<!-- Premium 3 Dot Menu -->
+<div class="menu">
+  <button class="menu-btn">⋮</button>
+  <div class="menu-content">
+    <a href="https://www.facebook.com/ShihabRahman.056" target="_blank">🌐 Facebook</a>
+    <a href="https://www.instagram.com/shihabrahman.056/" target="_blank">📸 Instagram</a>
+    <a href="https://twitter.com/ShihabRahman056" target="_blank">🐦 Twitter</a>
+  </div>
+</div>
+
+<style>
+  /* Menu Container */
+  .menu {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 2000;
+  }
+
+  /* 3 dot button */
+  .menu-btn {
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.3);
+    color: #333;
+    font-size: 22px;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    transition: all 0.3s ease;
+  }
+  .menu-btn:hover {
+    background: rgba(255, 255, 255, 0.4);
+    transform: scale(1.1);
+  }
+
+  /* Dropdown Menu */
+  .menu-content {
+    display: none;
+    position: absolute;
+    top: 58px;
+    left: 0;
+    background: rgba(255,255,255,0.9);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 16px;
+    min-width: 180px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    overflow: hidden;
+  }
+
+  /* Links */
+  .menu-content a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 16px;
+    text-decoration: none;
+    color: #333;
+    font-size: 15px;
+    transition: background 0.25s ease;
+  }
+
+  .menu-content a:hover {
+    background: rgba(0, 119, 204, 0.1);
+    color: #0077cc;
+  }
+
+  /* Show class with animation */
+  .menu.show .menu-content {
+    display: block;
+    animation: fadeInScale 0.3s ease forwards;
+  }
+
+  @keyframes fadeInScale {
+    from { opacity: 0; transform: translateY(-10px) scale(0.95);}
+    to { opacity: 1; transform: translateY(0) scale(1);}
+  }
+</style>
+
+<script>
+  const menuBtn = document.querySelector(".menu-btn");
+  const menu = document.querySelector(".menu");
+
+  menuBtn.onclick = () => {
+    menu.classList.toggle("show");
+  };
+
+  window.onclick = function(event) {
+    if (!event.target.matches('.menu-btn')) {
+      if (menu.classList.contains('show')) {
+        menu.classList.remove('show');
+      }
+    }
+  };
+</script>
+
+<footer>
     © Made By Neo
   </footer>
 
