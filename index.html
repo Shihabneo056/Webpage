@@ -162,19 +162,9 @@
     </section>
 
     <footer class="card" aria-label="Footer">
-      <!-- Visitor counter inserted here -->
-      <div id="visitorCounterWrap" style="display:flex;flex-direction:column;align-items:center;gap:10px;">
-        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
-          <div style="font-size:0.95rem;color:#555;display:flex;align-items:center;gap:8px;">
-            <span>👥</span>
-            <span>Visitors</span>
-          </div>
-          <div id="visitor-counter" style="background:linear-gradient(180deg, rgba(0,119,204,0.06), transparent);padding:8px 12px;border-radius:10px;border:1px solid rgba(0,119,204,0.08);font-weight:600;">
-            <span id="visitor-count">—</span>
-          </div>
-        </div>
-        <p style="margin:0;color:var(--muted);font-size:0.85rem;">© Made by Neo — Page Created By Shihab Rahman</p>
-      </div>
+      <a href='https://www.free-counters.org/'>www.free-Counter.org</a> <script type='text/javascript' src='https://www.freevisitorcounters.com/auth.php?id=31e86c6c9709096521f32590932d2425ae42d501'></script>
+<script type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/1458498/t/3"></script>
+      <p style="margin:0"><b>©2025-2026 P̳a̳g̳e̳ ̳C̳r̳e̳a̳t̳e̳d̳ ̳B̳y̳ ̳S̳h̳i̳h̳a̳b̳ ̳R̳a̳h̳m̳a̳n</b></p>
     </footer>
   </main>
 
@@ -245,50 +235,6 @@
       document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') closeModal();
       });
-    })();
-
-    // Visitor counter: CountAPI with localStorage fallback
-    (function(){
-      // Config: change namespace/key if you want a different counter id
-      const NAMESPACE = 'shihabrahman1'; // optional: change to your own namespace
-      const KEY = 'bachelorpoint_s05_part6'; // optional: change to identify this page
-      const apiUrl = `https://api.countapi.xyz/hit/${encodeURIComponent(NAMESPACE)}/${encodeURIComponent(KEY)}`;
-
-      const countEl = document.getElementById('visitor-count');
-
-      function showFallbackCount(){
-        // fallback using localStorage (per-browser)
-        try {
-          const lsKey = `bp_fallback_${NAMESPACE}_${KEY}`;
-          let v = parseInt(localStorage.getItem(lsKey) || '0', 10);
-          v = v + 1;
-          localStorage.setItem(lsKey, String(v));
-          countEl.textContent = v + ' (local)';
-        } catch (e) {
-          // if even localStorage fails, show dash
-          countEl.textContent = '—';
-        }
-      }
-
-      // Try CountAPI first (global counter). If it fails, use fallback.
-      fetch(apiUrl, { method: 'GET', cache: 'no-store' })
-        .then(response => {
-          if (!response.ok) throw new Error('Network response not ok');
-          return response.json();
-        })
-        .then(data => {
-          // CountAPI returns { value: number, ... }
-          if (data && typeof data.value !== 'undefined') {
-            countEl.textContent = data.value;
-          } else {
-            showFallbackCount();
-          }
-        })
-        .catch(err => {
-          // failed to reach CountAPI — use fallback
-          console.warn('CountAPI failed, using fallback local counter.', err);
-          showFallbackCount();
-        });
     })();
 
     // Initialize Plyr (player element must exist)
